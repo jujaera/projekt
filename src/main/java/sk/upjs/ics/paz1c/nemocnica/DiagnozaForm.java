@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sk.upjs.ics.paz1c.nemocnica;
 
-/**
- *
- * @author Judita
- */
 public class DiagnozaForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DiagnozaForm
-     */
+    private Diagnoza diagnoza;
+    private DiagnozaDAO diagnozaDao = DaoFactory.INSTANCE.getDiagnozaDao();
+    
     public DiagnozaForm() {
         initComponents();
     }
@@ -41,6 +33,11 @@ public class DiagnozaForm extends javax.swing.JFrame {
         nazovDiagnozajLabel.setText("Názov: ");
 
         okDiagnozajButton.setText("OK");
+        okDiagnozajButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okDiagnozajButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +74,12 @@ public class DiagnozaForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void okDiagnozajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okDiagnozajButtonActionPerformed
+        diagnozaDao.ulozDiagnozu(diagnoza);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_okDiagnozajButtonActionPerformed
 
     /**
      * @param args the command line arguments

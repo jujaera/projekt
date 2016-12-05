@@ -14,4 +14,6 @@ public interface LiekDAO {
     void vymazLiek(int id);
     
     void upravLiek(Liek liek);
+    
+    public void ulozLiek(Liek liek);
 }

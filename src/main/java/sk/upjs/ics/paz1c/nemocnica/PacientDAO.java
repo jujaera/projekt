@@ -15,4 +15,6 @@ public interface PacientDAO {
     
     void upravPacienta(Pacient pacient);
     
+    public void ulozPacienta(Pacient pacient);
+    
 }

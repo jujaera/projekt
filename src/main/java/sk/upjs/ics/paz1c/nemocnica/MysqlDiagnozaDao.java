@@ -47,5 +47,10 @@ public class MysqlDiagnozaDao implements DiagnozaDAO {
     public void vymazDiagnozu(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void ulozDiagnozu(Diagnoza diagnoza) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -39,5 +39,10 @@ public class MysqlLekarDao implements LekarDAO {
     public void upravLekara(Lekar lekar) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void ulozLekara(Lekar lekar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

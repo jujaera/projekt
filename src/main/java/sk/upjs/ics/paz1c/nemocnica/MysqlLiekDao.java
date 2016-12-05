@@ -47,5 +47,10 @@ public class MysqlLiekDao implements LiekDAO {
     public void upravLiek(Liek liek) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void ulozLiek(Liek liek) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -32,5 +32,10 @@ public class MysqlZaznamDao implements ZaznamDAO {
     public void upravZoznam(Zaznam zaznam) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void ulozZaznam(Zaznam zaznam) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

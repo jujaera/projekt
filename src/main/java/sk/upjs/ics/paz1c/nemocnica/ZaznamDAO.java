@@ -15,4 +15,6 @@ public interface ZaznamDAO {
     
     void upravZoznam(Zaznam zaznam);
     
+    public void ulozZaznam(Zaznam zaznam);
+    
 }

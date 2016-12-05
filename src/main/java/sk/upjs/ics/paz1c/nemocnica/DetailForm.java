@@ -1,19 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.paz1c.nemocnica;
 
-/**
- *
- * @author Judita
- */
 public class DetailForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DetailForm
-     */
     public DetailForm() {
         initComponents();
     }
@@ -29,62 +17,67 @@ public class DetailForm extends javax.swing.JFrame {
 
         okDetailButton = new javax.swing.JButton();
         detailLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lekarDetailjLabel = new javax.swing.JLabel();
+        pacientDetailjLabel = new javax.swing.JLabel();
+        menoLekarDetailjLabel = new javax.swing.JLabel();
+        priezviskoLekarDetailjLabel = new javax.swing.JLabel();
+        specLekarDetailjLabel = new javax.swing.JLabel();
+        menoPacientDetailjLabel = new javax.swing.JLabel();
+        priezviskoPacientDetailjLabel = new javax.swing.JLabel();
+        vekPacientDetailjLabel = new javax.swing.JLabel();
+        diagnozaDetailjLabel = new javax.swing.JLabel();
+        diagnozaNazovDetailjLabel = new javax.swing.JLabel();
+        liekDetailjLabel = new javax.swing.JLabel();
+        nazovLiekDetailjLabel = new javax.swing.JLabel();
         upravitjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         okDetailButton.setText("OK");
+        okDetailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okDetailButtonActionPerformed(evt);
+            }
+        });
 
         detailLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         detailLabel.setText("Detail záznamu :");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Lekár ");
+        lekarDetailjLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lekarDetailjLabel.setText("Lekár ");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Pacient ");
+        pacientDetailjLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pacientDetailjLabel.setText("Pacient ");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Meno :");
+        menoLekarDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        menoLekarDetailjLabel.setText("Meno :");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Priezvisko :");
+        priezviskoLekarDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        priezviskoLekarDetailjLabel.setText("Priezvisko :");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Špecializácia :");
+        specLekarDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        specLekarDetailjLabel.setText("Špecializácia :");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Meno : ");
+        menoPacientDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        menoPacientDetailjLabel.setText("Meno : ");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Priezvisko :");
+        priezviskoPacientDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        priezviskoPacientDetailjLabel.setText("Priezvisko :");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Vek :");
+        vekPacientDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        vekPacientDetailjLabel.setText("Vek :");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setText("Diagnóza ");
+        diagnozaDetailjLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        diagnozaDetailjLabel.setText("Diagnóza ");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("Názov :");
+        diagnozaNazovDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        diagnozaNazovDetailjLabel.setText("Názov :");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setText("Liek ");
+        liekDetailjLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        liekDetailjLabel.setText("Liek ");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Názov :");
+        nazovLiekDetailjLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nazovLiekDetailjLabel.setText("Názov :");
 
         upravitjButton.setText("UPRAVIŤ");
         upravitjButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,29 +93,29 @@ public class DetailForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lekarDetailjLabel)
                     .addComponent(detailLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
+                                    .addComponent(menoLekarDetailjLabel)
+                                    .addComponent(priezviskoLekarDetailjLabel)
+                                    .addComponent(specLekarDetailjLabel)
+                                    .addComponent(diagnozaDetailjLabel)
+                                    .addComponent(diagnozaNazovDetailjLabel))
                                 .addGap(187, 187, 187))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(upravitjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
+                            .addComponent(priezviskoPacientDetailjLabel)
+                            .addComponent(menoPacientDetailjLabel)
+                            .addComponent(vekPacientDetailjLabel)
+                            .addComponent(liekDetailjLabel)
+                            .addComponent(nazovLiekDetailjLabel)
                             .addComponent(okDetailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
+                            .addComponent(pacientDetailjLabel))))
                 .addContainerGap(184, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -132,28 +125,28 @@ public class DetailForm extends javax.swing.JFrame {
                 .addComponent(detailLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(lekarDetailjLabel)
+                    .addComponent(pacientDetailjLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(menoLekarDetailjLabel)
+                    .addComponent(menoPacientDetailjLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(priezviskoPacientDetailjLabel)
+                    .addComponent(priezviskoLekarDetailjLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8))
+                    .addComponent(specLekarDetailjLabel)
+                    .addComponent(vekPacientDetailjLabel))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
+                    .addComponent(diagnozaDetailjLabel)
+                    .addComponent(liekDetailjLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12))
+                    .addComponent(diagnozaNazovDetailjLabel)
+                    .addComponent(nazovLiekDetailjLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(okDetailButton, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -169,6 +162,10 @@ public class DetailForm extends javax.swing.JFrame {
         upravitForm.setVisible(true);
         upravitForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_upravitjButtonActionPerformed
+
+    private void okDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okDetailButtonActionPerformed
+       dispose();
+    }//GEN-LAST:event_okDetailButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,19 +204,19 @@ public class DetailForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel detailLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel diagnozaDetailjLabel;
+    private javax.swing.JLabel diagnozaNazovDetailjLabel;
+    private javax.swing.JLabel lekarDetailjLabel;
+    private javax.swing.JLabel liekDetailjLabel;
+    private javax.swing.JLabel menoLekarDetailjLabel;
+    private javax.swing.JLabel menoPacientDetailjLabel;
+    private javax.swing.JLabel nazovLiekDetailjLabel;
     private javax.swing.JButton okDetailButton;
+    private javax.swing.JLabel pacientDetailjLabel;
+    private javax.swing.JLabel priezviskoLekarDetailjLabel;
+    private javax.swing.JLabel priezviskoPacientDetailjLabel;
+    private javax.swing.JLabel specLekarDetailjLabel;
     private javax.swing.JButton upravitjButton;
+    private javax.swing.JLabel vekPacientDetailjLabel;
     // End of variables declaration//GEN-END:variables
 }
