@@ -21,36 +21,37 @@ public class MysqlLiekDao implements LiekDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public MysqlLiekDao() {
+    }
+
     @Override
     public List<Liek> dajLieky() {
-        String sql = "SELECT idL, nazov FROM liek";
-        BeanPropertyRowMapper<Liek> rowMapper = new BeanPropertyRowMapper<>(Liek.class);
+        String sql = "SELECT * FROM liek";
+        BeanPropertyRowMapper<Liek> rowMapper = new BeanPropertyRowMapper(Liek.class);
         return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
     public void pridajLiek(Liek liek) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Liek dajPodlaIdLiek(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void vymazLiek(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO liek (nazov) VALUES (?)";
+        jdbcTemplate.update(sql, liek.getNazov());
     }
 
     @Override
     public void upravLiek(Liek liek) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE liek SET nazov=? WHERE id=?";
+        jdbcTemplate.update(sql, liek.getNazov(), liek.getId());
     }
 
     @Override
     public void ulozLiek(Liek liek) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(liek.getId() == 0) {
+            String sqlInsert = "INSERT INTO liek (nazov) VALUES (?)";
+            jdbcTemplate.update(sqlInsert, liek.getNazov());
+        } else {
+           String sql = "UPDATE lekar SET nazov=? WHERE id=? ";
+           jdbcTemplate.update(sql,liek.getNazov(),liek.getId()); 
+        }
     }
     
 }

@@ -15,9 +15,6 @@ public class Zaznam {
     private Diagnoza diagnoza;
     private Liek liek;
 
-    public Zaznam() {
-    }
-    
     public Lekar getLekar() {
         return lekar;
     }
@@ -49,20 +46,9 @@ public class Zaznam {
     public void setLiek(Liek liek) {
         this.liek = liek;
     }
-
-/*
+                        
     @Override
     public String toString() {
-        return id + " : " + lekar.toString() + " | " + pacient.toString() + " | " + diagnoza.toString() + " | " + liek.toString();
-    }
-    
-    public String doRiadkuSuboru(){
-        return id + " : " + lekar.toString() + " | " + pacient.toString() + " | " + diagnoza.toString() + " | " + liek.toString();
-    }
-    
-    public String toFileLine() {
-        return id + "\t" + lekar.toString() + "\t" + pacient.toString() + "\t" + diagnoza.toString() + "\t" + liek.toString();
-    }
-*/
-    
+        return lekar.toString() + "  |  " + pacient.toString() + "  |  "+ diagnoza.toString() + "  |  " + liek.toString();
+    } 
 }

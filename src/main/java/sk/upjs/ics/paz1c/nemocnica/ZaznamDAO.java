@@ -6,15 +6,12 @@ import java.util.List;
 public interface ZaznamDAO {
 
     List<Zaznam> dajZaznamy();
-    
-    Zaznam najdiPodlaIdZaznam(int id);
-    
-    void vymazZaznam(int id);
-    
+          
     void pridajZaznam(Zaznam zaznam);
     
-    void upravZoznam(Zaznam zaznam);
+    void upravZaznam(Zaznam zaznam);
     
-    public void ulozZaznam(Zaznam zaznam);
+    void vymazZaznam(Zaznam zaznam);
+    
     
 }

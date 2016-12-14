@@ -4,6 +4,7 @@ package sk.upjs.ics.paz1c.nemocnica;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,47 +20,29 @@ public class mysqlLiekDaoTest {
     @Test
     public void testPridajLieka(){
         System.out.println("Pridaj liek");
-        Liek liek= null;
-        MysqlLiekDao instance = null;
+        Liek liek = new Liek();
+        MysqlLiekDao instance = new MysqlLiekDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        liek.setId(1);
+        liek.setNazov("paralen");
+        List<Liek> lieky = instance.dajLieky();
         instance.pridajLiek(liek);
-        fail("The test case is a prototype.");
     }
     
     @Test
     public void testDajLieky(){
-        List<Liek> lieky = liekDao.dajLieky();
-        assertTrue(lieky.size()>0);
-    }
-    
-    @Test
-    public void testDajPodlaIdLiek(){
-        System.out.println("Daj liek podľa ID");
-        Integer id = null;
-        MysqlLiekDao instance = null;
-        Liek expResult = null;
-        Liek result = instance.dajPodlaIdLiek(id);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Daj liek");
+        MysqlLiekDao dao = new MysqlLiekDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        List<Liek> lieky = dao.dajLieky();
     }
     
      @Test
-    public void testZmenLiek() {
+    public void testUpravLiek() {
         System.out.println("Edituj liek");
-        Liek liek = null;
-        MysqlLiekDao instance = null;
+        Liek liek = new Liek();
+        MysqlLiekDao instance = new MysqlLiekDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        liek.setId(1);
+        liek.setNazov("ibalgin");
         instance.upravLiek(liek);
-        fail("The test case is a prototype.");
     }
-
-    @Test
-    public void testVymazLiek() {
-        System.out.println("Vymaž liek");
-        Integer id = null;
-        MysqlLiekDao instance = null;
-        instance.vymazLiek(id);
-        fail("The test case is a prototype.");
-    }
-    
-    
-    
+       
 }

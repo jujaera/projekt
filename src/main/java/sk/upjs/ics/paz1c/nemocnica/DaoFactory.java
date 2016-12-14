@@ -15,17 +15,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public enum DaoFactory {
     
+    
     INSTANCE;
     
-    private ZaznamDAO suborovyZaznamDao;
     private ZaznamDAO mysqlZaznamDao;
     private LekarDAO lekarDao;
     private PacientDAO pacientDao;
     private LiekDAO liekDao;
     private DiagnozaDAO diagnozaDao;
-    
-    private static final File SUBOR_ZAZNAMY = new File("zaznamy.txt");
-    private static final File SUBOR_MAX_ID = new File("maxId.txt");
     
     public ZaznamDAO getZaznamDao(){
         return getMysqlZaznamDao();
@@ -38,11 +35,12 @@ public enum DaoFactory {
         return mysqlZaznamDao;
     }
     
+    // prepojenie k databáze
     public JdbcTemplate getJdbcTemplate(){
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUrl("---------");
-        dataSource.setUser("");
-        dataSource.setPassword("");
+        dataSource.setUrl("jdbc:mysql://localhost/nemocnice_zaznamy?serverTimezone=Europe/Bratislava");
+        dataSource.setUser("nemoc_zaznamy");
+        dataSource.setPassword("heslo");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         return jdbcTemplate;
     }

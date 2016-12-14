@@ -14,52 +14,34 @@ import static org.junit.Assert.*;
  */
 public class mysqlDiagnozaDaoTest {
     
-    DiagnozaDAO diagnozaDao = DaoFactory.INSTANCE.getDiagnozaDao();
-    
     public mysqlDiagnozaDaoTest() {
     }
     
     @Test
     public void testPridajDiagnozu(){
         System.out.println("Pridaj diagnózu");
-        Diagnoza diagnoza = null;
-        MysqlDiagnozaDao instance = null;
+        Diagnoza diagnoza = new Diagnoza();
+        MysqlDiagnozaDao instance = new MysqlDiagnozaDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        diagnoza.setId(1);
+        diagnoza.setNazov("horúčka");
+        List<Diagnoza> diagnozy = instance.dajDiagnozy();
         instance.pridajDiagnozu(diagnoza);
-        fail("The test case is a prototype.");
     }
     
     @Test
     public void testDajDiagnozy(){
-        List<Diagnoza> diagnozy = diagnozaDao.dajDiagnozy();
-        assertTrue(diagnozy.size()>0);
-    }
-    
-    @Test
-    public void testDajPodlaIdDiagnozu(){
-        System.out.println("Daj diagozu podľa ID");
-        Integer id = null;
-        MysqlDiagnozaDao instance = null;
-        Diagnoza expResult = null;
-        Diagnoza result = instance.dajPodlaIdDiagnozu(id);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        System.out.println("Daj diagnózy");
+        MysqlDiagnozaDao dao = new MysqlDiagnozaDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        List<Diagnoza> diagnozy = dao.dajDiagnozy();
     }
     
      @Test
-    public void testZmenDiagnozu() {
+    public void testUpravDiagnozu() {
         System.out.println("Edituj diagnózu");
-        Diagnoza diagnoza = null;
-        MysqlDiagnozaDao instance = null;
+        Diagnoza diagnoza = new Diagnoza();
+        MysqlDiagnozaDao instance = new MysqlDiagnozaDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        diagnoza.setId(1);
+        diagnoza.setNazov("chrípka");
         instance.upravDiagnozu(diagnoza);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testVymazDiagnozu() {
-        System.out.println("Vymaž diagnózu");
-        Integer id = null;
-        MysqlDiagnozaDao instance = null;
-        instance.vymazDiagnozu(id);
-        fail("The test case is a prototype.");
     }
 }

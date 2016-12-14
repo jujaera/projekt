@@ -9,10 +9,6 @@ public interface LekarDAO {
     
     void pridajLekara(Lekar lekar);
     
-    Lekar dajPodlaIdLekara(int id);   
-    
-    void vymazLekara(int id);
-    
     void upravLekara(Lekar lekar);
     
     public void ulozLekara(Lekar lekar);

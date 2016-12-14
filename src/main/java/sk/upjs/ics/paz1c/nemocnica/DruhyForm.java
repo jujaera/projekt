@@ -1,11 +1,15 @@
 package sk.upjs.ics.paz1c.nemocnica;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+
 public class DruhyForm extends javax.swing.JFrame {
 
-  //  private ZaznamListModel zaznamListModel;
+    private ZaznamListModel zaznamListModel;
     
     public DruhyForm() {
-       // zaznamListModel = new ZaznamListModel();
+        zaznamListModel = new ZaznamListModel();
         initComponents();
     }
 
@@ -21,24 +25,26 @@ public class DruhyForm extends javax.swing.JFrame {
         zaznamyLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         zaznamyList = new javax.swing.JList<>();
-        detailButton = new javax.swing.JButton();
         pridatButton = new javax.swing.JButton();
         zmazatButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        refreshjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        zaznamyLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        zaznamyLabel.setText("Záznamy:");
+        zaznamyLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        zaznamyLabel.setText("Záznamy");
 
-        jScrollPane1.setViewportView(zaznamyList);
-
-        detailButton.setText("DETAIL");
-        detailButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailButtonActionPerformed(evt);
+        zaznamyList.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        zaznamyList.setModel(zaznamListModel);
+        zaznamyList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detailZaznamuHandler(evt);
             }
         });
+        jScrollPane1.setViewportView(zaznamyList);
 
+        pridatButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pridatButton.setText("PRIDAŤ");
         pridatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,7 +52,29 @@ public class DruhyForm extends javax.swing.JFrame {
             }
         });
 
+        zmazatButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         zmazatButton.setText("ZMAZAŤ");
+        zmazatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zmazatButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("NÁPOVEDA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        refreshjButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        refreshjButton.setText("REFRESH");
+        refreshjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshjButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,51 +83,92 @@ public class DruhyForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(zaznamyLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pridatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(zmazatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 13, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 230, Short.MAX_VALUE)
+                        .addComponent(zaznamyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148)
+                        .addComponent(refreshjButton)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(pridatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(zmazatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(zaznamyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pridatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(zmazatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(zaznamyLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(refreshjButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pridatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zmazatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // zobrazenie pridat formu
     private void pridatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridatButtonActionPerformed
         PridatForm pridatForm = new PridatForm();
         pridatForm.setVisible(true);
         pridatForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_pridatButtonActionPerformed
 
-    private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailButtonActionPerformed
-        DetailForm detailForm = new DetailForm();
-        detailForm.setVisible(true);
-        detailForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_detailButtonActionPerformed
+    // dvojite kliknutie na zaznam pre jeho detail
+    private void detailZaznamuHandler(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailZaznamuHandler
+        if (evt.getClickCount() == 2) {
+            DetailForm detailForm = new DetailForm();
+            detailForm.detailZaznam(zaznamyList.getSelectedValue());
+            detailForm.setVisible(true);
+        }
+    }//GEN-LAST:event_detailZaznamuHandler
+
+    // zmazanie zaznamu, je potrebne oznacit zaznam
+    private void zmazatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zmazatButtonActionPerformed
+        if(zaznamyList.getSelectedValue()==null){
+            JOptionPane.showMessageDialog(null, "Je potrebné najskôr označiť záznam.");
+        } else {
+            Zaznam zaznam = zaznamyList.getSelectedValue();
+            // okno ano nie
+            int odpoved = JOptionPane.YES_NO_OPTION;
+            int otazka = JOptionPane.showConfirmDialog(this, "Ste si istý?", "Vymazať" ,odpoved);
+            // ak je odpoved ano, tak vymaze zoznam a refreshne list zoznamov
+            if(otazka == 0){            
+                DaoFactory.INSTANCE.getZaznamDao().vymazZaznam(zaznam);
+                zaznamListModel.refresh();
+             }
+        }
+    }//GEN-LAST:event_zmazatButtonActionPerformed
+
+    // napoveda
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null, "Všetky záznamy, ktoré sa nachádzajú v systéme. \n"
+                                    +"Po dvojkliknutí na záznam sa Vám zobrazí podrobné informácie o zázname.  \n"
+                                    + "Tlačidlo pridať Vám umožní pridať nový záznam "
+                                        + "a tlačidlo vymazať Vám umožní vymazať aktuálny vybratý záznam. \n"
+                                     + "Po pridaní záznamu je potrebné stlačiť tlačidlo refresh pre zobrazenie nového záznamu.");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    // refresh listu zoznamov 
+    private void refreshjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshjButtonActionPerformed
+        zaznamListModel.refresh();
+    }//GEN-LAST:event_refreshjButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,9 +206,10 @@ public class DruhyForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton detailButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton pridatButton;
+    private javax.swing.JButton refreshjButton;
     private javax.swing.JLabel zaznamyLabel;
     private javax.swing.JList<Zaznam> zaznamyList;
     private javax.swing.JButton zmazatButton;

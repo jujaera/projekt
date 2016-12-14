@@ -15,34 +15,32 @@ public class MysqlPacientDao implements PacientDAO {
 
     @Override
     public List<Pacient> dajPacietov() {
-       String sql = "SELECT idP, menoP, priezviskoP, vek FROM pacient";
+       String sql = "SELECT * FROM pacient";
         BeanPropertyRowMapper<Pacient> rowMapper = new BeanPropertyRowMapper<>(Pacient.class);
         return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
     public void pridajPacienta(Pacient pacient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Pacient dajPodlaIdPacienta(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void vymazPacienta(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO pacient (meno, priezvisko, vek) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, pacient.getMeno(), pacient.getPriezvisko(), pacient.getVek());
     }
 
     @Override
     public void upravPacienta(Pacient pacient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE pacient SET meno=?, priezvisko=?, vek=? WHERE id=? ";
+        jdbcTemplate.update(sql, pacient.getMeno(), pacient.getPriezvisko(), pacient.getVek(), pacient.getId());
     }
 
     @Override
     public void ulozPacienta(Pacient pacient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(pacient.getId() == 0) {
+            String sqlInsert = "INSERT INTO pacient (meno, priezvisko, vek) VALUES (?,?,?)";
+            jdbcTemplate.update(sqlInsert, pacient.getMeno(), pacient.getPriezvisko(), pacient.getVek());
+        } else {
+           String sql = "UPDATE pacient SET meno=?, priezvisko=?, vek=? WHERE id=? ";
+           jdbcTemplate.update(sql,pacient.getMeno(), pacient.getPriezvisko(), pacient.getVek(), pacient.getId()); 
+        }
     }
     
 }

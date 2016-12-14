@@ -17,40 +17,43 @@ public class MysqlDiagnozaDao implements DiagnozaDAO {
 
     private JdbcTemplate jdbcTemplate;
     
+    public MysqlDiagnozaDao(){
+    }
+    
     public MysqlDiagnozaDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
     @Override
     public List<Diagnoza> dajDiagnozy() {
-        String sql = "SELECT idD, nazovD, zavaznost FROM diagnoza";
+        String sql = "SELECT * FROM diagnoza";
+        // rovnake pomenovanie stlpcov v tabulke a jej hodnotami
         BeanPropertyRowMapper<Diagnoza> rowMapper = new BeanPropertyRowMapper<>(Diagnoza.class);
         return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
     public void pridajDiagnozu(Diagnoza diagnoza) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Diagnoza dajPodlaIdDiagnozu(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO diagnoza (nazov) VALUES (?)";
+        jdbcTemplate.update(sql, diagnoza.getNazov());
     }
 
     @Override
     public void upravDiagnozu(Diagnoza diagnoza) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void vymazDiagnozu(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE diagnoza SET nazov=? WHERE id=? ";
+        jdbcTemplate.update(sql, diagnoza.getNazov(), diagnoza.getId());
     }
 
     @Override
     public void ulozDiagnozu(Diagnoza diagnoza) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(diagnoza.getId() == 0) {
+            String sqlInsert = "INSERT INTO diagnoza (nazov) VALUES (?)";
+            jdbcTemplate.update(sqlInsert, diagnoza.getNazov());
+        } else {
+            String sql = "UPDATE diagnoza SET nazov=? WHERE id=? ";
+            jdbcTemplate.update(sql, diagnoza.getNazov(), diagnoza.getId());
+        }
     }
     
 }

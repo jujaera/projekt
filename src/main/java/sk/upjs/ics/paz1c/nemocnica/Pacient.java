@@ -5,27 +5,33 @@ import java.util.Scanner;
 public class Pacient {
     
     private int id;
-    private String menoP;
-    private String priezviskoP;
+    private String meno;
+    private String priezvisko;
     private int vek;
 
-    public Pacient() {
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
-    public String getMenoP() {
-        return menoP;
+    public String getMeno() {
+        return meno;
     }
 
-    public void setMenoP(String menoP) {
-        this.menoP = menoP;
+    public void setMeno(String meno) {
+        this.meno = meno;
     }
 
-    public String getPriezviskoP() {
-        return priezviskoP;
+    public String getPriezvisko() {
+        return priezvisko;
     }
 
-    public void setPriezviskoP(String priezviskoP) {
-        this.priezviskoP = priezviskoP;
+    public void setPriezvisko(String priezvisko) {
+        this.priezvisko = priezvisko;
     }
 
     public int getVek() {
@@ -35,32 +41,9 @@ public class Pacient {
     public void setVek(int vek) {
         this.vek = vek;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-
+ 
     @Override
     public String toString() {
-        return id + " : " + menoP + " " + priezviskoP + ", " + vek;
-    }
-    
-    public String toFileLine() {
-        return id + "\t" + menoP + "\t" + priezviskoP + "\t" + vek; 
-    } 
-    
-    public Pacient(String fileLine) {
-        Scanner sc = new Scanner(fileLine);
-        sc.useDelimiter("\t");
-        id = sc.nextInt();
-        menoP = sc.next();
-        priezviskoP = sc.next();
-        vek = sc.nextInt();
+        return meno + "   " + priezvisko;
     }
 }

@@ -8,11 +8,7 @@ public interface LiekDAO {
     List<Liek> dajLieky();   
     
     void pridajLiek(Liek liek);
-    
-    Liek dajPodlaIdLiek(int id);
-    
-    void vymazLiek(int id);
-    
+      
     void upravLiek(Liek liek);
     
     public void ulozLiek(Liek liek);

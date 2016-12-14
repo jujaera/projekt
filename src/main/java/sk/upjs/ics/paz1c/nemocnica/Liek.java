@@ -7,9 +7,14 @@ public class Liek {
     private int id;
     private String nazov;
 
-    public Liek() {
+     public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNazov() {
         return nazov;
     }
@@ -18,20 +23,11 @@ public class Liek {
         this.nazov = nazov;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-
     @Override
     public String toString() {
-        return id + " : " + nazov;
+        return nazov;
     }
-    
+    /*
     public String toFileLine() {
         return id + "\t" + nazov;
     }
@@ -42,4 +38,5 @@ public class Liek {
         id = sc.nextInt();
         nazov = sc.next();
     }
+*/
 }

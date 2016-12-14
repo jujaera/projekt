@@ -14,35 +14,33 @@ public class MysqlLekarDao implements LekarDAO {
 
     @Override
     public List<Lekar> dajLekarov() {
-        String sql = "SELECT idL, menoL, priezviskoL, specializacia FROM lekar";
+        String sql = "SELECT * FROM lekar";
+        // rovnake pomenovanie stlpcov v tabulke a jej hodnotami
         BeanPropertyRowMapper<Lekar> rowMapper = new BeanPropertyRowMapper<>(Lekar.class); //lekar parameter
         return jdbcTemplate.query(sql, rowMapper);
-        //pre kažždý riadok tabulky vyrobi jedneho lekara, KAZDY RIADOK JE JEDEN OBJEKT
     }
 
     @Override
     public void pridajLekara(Lekar lekar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Lekar dajPodlaIdLekara(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void vymazLekara(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String sql = "INSERT INTO lekar (meno, priezvisko, specializacia) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, lekar.getMeno(), lekar.getPriezvisko(), lekar.getSpecializacia());
     }
 
     @Override
     public void upravLekara(Lekar lekar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+       String sql = "UPDATE lekar SET meno=?, priezvisko=?, specializacia=? WHERE id=? ";
+       jdbcTemplate.update(sql,lekar.getMeno(), lekar.getPriezvisko(), lekar.getSpecializacia(), lekar.getId());
+   }
 
     @Override
     public void ulozLekara(Lekar lekar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(lekar.getId() == 0) {
+            String sqlInsert = "INSERT INTO lekar (meno, priezvisko, specializacia) VALUES (?,?,?)";
+            jdbcTemplate.update(sqlInsert, lekar.getMeno(), lekar.getPriezvisko(), lekar.getSpecializacia());
+        } else {
+           String sql = "UPDATE lekar SET meno=?, priezvisko=?, specializacia=? WHERE id=? ";
+           jdbcTemplate.update(sql,lekar.getMeno(), lekar.getPriezvisko(), lekar.getSpecializacia(), lekar.getId()); 
+        }
     }
     
 }

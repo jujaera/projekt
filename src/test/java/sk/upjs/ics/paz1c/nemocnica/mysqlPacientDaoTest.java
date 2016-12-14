@@ -10,53 +10,39 @@ import static org.junit.Assert.*;
 
 public class mysqlPacientDaoTest {
        
-    PacientDAO pacientDao = DaoFactory.INSTANCE.getPacientDao();
-   
     public mysqlPacientDaoTest() {
     }
     
     @Test
     public void testPridajPacienta(){
         System.out.println("Pridaj pacienta");
-        Pacient pacient= null;
-        MysqlPacientDao instance = null;
+        Pacient pacient = new Pacient();
+        MysqlPacientDao instance = new MysqlPacientDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        pacient.setId(1);
+        pacient.setMeno("Jozef");
+        pacient.setPriezvisko("Malý");
+        pacient.setVek(2);
+        List<Pacient> pacienti = instance.dajPacietov();
         instance.pridajPacienta(pacient);
-        fail("The test case is a prototype.");
     }
     
     @Test
     public void testDajPacientov(){
-        List<Pacient> pacienti = pacientDao.dajPacietov();
-        assertTrue(pacienti.size()>0);
-    }
-    
-    @Test
-    public void testDajPodlaIdPacienta(){
-        System.out.println("Daj pacienta podľa ID");
-        Integer id = null;
-        MysqlPacientDao instance = null;
-        Pacient expResult = null;
-        Pacient result = instance.dajPodlaIdPacienta(id);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-    
-     @Test
-    public void testZmenPacienta() {
-        System.out.println("Edituj pacienta");
-        Pacient pacient = null;
-        MysqlPacientDao instance = null;
-        instance.upravPacienta(pacient);
-        fail("The test case is a prototype.");
+        System.out.println("Daj pacientov");
+        MysqlPacientDao dao = new MysqlPacientDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        List<Pacient> pacienti = dao.dajPacietov();
     }
 
-    @Test
-    public void testVymazPacienta() {
-        System.out.println("Vymaž pacienta");
-        Integer id = null;
-        MysqlPacientDao instance = null;
-        instance.vymazPacienta(id);
-        fail("The test case is a prototype.");
+     @Test
+    public void testUpravPacienta() {
+        System.out.println("Edituj pacienta");
+        Pacient pacient = new Pacient();
+        MysqlPacientDao instance = new MysqlPacientDao(DaoFactory.INSTANCE.getJdbcTemplate());
+        pacient.setId(1);
+        pacient.setMeno("Jozef");
+        pacient.setPriezvisko("Malý");
+        pacient.setVek(2);
+        instance.upravPacienta(pacient);
     }
-    
+
 }

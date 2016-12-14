@@ -8,6 +8,7 @@ public class PrvyForm extends javax.swing.JFrame {
    private String prihlasovacieHeslo = "";
     
     public PrvyForm() {
+       
         initComponents();
     }
 
@@ -24,14 +25,15 @@ public class PrvyForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(204, 255, 204));
 
         prihlasenieLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         prihlasenieLabel.setText("Zadajte prihlasovacie údaje");
 
-        prihlasovacieMenoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        prihlasovacieMenoLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         prihlasovacieMenoLabel.setText("Prihlasovacie meno:");
 
-        prihlasovacieHesloLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        prihlasovacieHesloLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         prihlasovacieHesloLabel.setText("Prihlasovacie heslo:");
 
         prihlasovacieMenoTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +48,7 @@ public class PrvyForm extends javax.swing.JFrame {
             }
         });
 
+        prihlasitButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         prihlasitButton.setText("PRIHLÁSIŤ");
         prihlasitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,39 +61,37 @@ public class PrvyForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(prihlasenieLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(prihlasenieLabel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(prihlasovacieHesloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(prihlasovacieMenoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(prihlasitButton)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(prihlasovacieMenoTextField)
-                                .addComponent(prihlasovacieHesloTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))))
-                .addContainerGap())
+                    .addComponent(prihlasovacieMenoLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(prihlasovacieHesloLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(prihlasitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prihlasovacieMenoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prihlasovacieHesloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(prihlasenieLabel)
-                .addGap(28, 28, 28)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prihlasovacieMenoLabel)
-                    .addComponent(prihlasovacieMenoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prihlasovacieHesloLabel)
-                    .addComponent(prihlasovacieHesloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(prihlasovacieMenoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prihlasovacieMenoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(prihlasitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prihlasovacieHesloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prihlasovacieHesloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(prihlasitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -105,10 +106,12 @@ public class PrvyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_prihlasovacieHesloTextFieldActionPerformed
 
     private void prihlasitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prihlasitButtonActionPerformed
+        // prihlasenie lekara do systemu na zaklade mena a hesla
         prihlasovacieMeno = prihlasovacieMenoTextField.getText();
         prihlasovacieHeslo  = prihlasovacieHesloTextField.getText();
         String meno = "lekar";
         String heslo = "heslo";
+        // overenie ci zadal spravne
         if(prihlasovacieMeno.equals(meno) && prihlasovacieHeslo.equals(heslo)) {
             DruhyForm druhyForm = new DruhyForm();
             druhyForm.setVisible(true);

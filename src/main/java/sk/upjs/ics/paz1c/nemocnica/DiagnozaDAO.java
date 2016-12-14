@@ -9,11 +9,7 @@ public interface DiagnozaDAO {
     
     void pridajDiagnozu(Diagnoza diagnoza);
     
-    Diagnoza dajPodlaIdDiagnozu(int id);
-    
     void upravDiagnozu(Diagnoza diagnoza);
-    
-    void vymazDiagnozu(int id);
 
     public void ulozDiagnozu(Diagnoza diagnoza);
 }
