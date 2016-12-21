@@ -7,11 +7,9 @@ public class UpravitForm extends javax.swing.JFrame {
     private LekarZaznamuComboBoxModel lekarZaznamuComboBoxModel;
     private Zaznam zaznam;
     private DiagnozaZaznamuComboBoxModel diagnozaZaznamuComboBoxModel;
-    private ZaznamListModel zaznamListModel;
     
     public UpravitForm() {
         lekarZaznamuComboBoxModel = new LekarZaznamuComboBoxModel();
-        zaznamListModel = new ZaznamListModel();
         diagnozaZaznamuComboBoxModel = new DiagnozaZaznamuComboBoxModel();
         initComponents();
 
@@ -268,6 +266,7 @@ public class UpravitForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lekarjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lekarjComboBoxActionPerformed
@@ -328,6 +327,7 @@ public class UpravitForm extends javax.swing.JFrame {
             novyliek.setId(zaznam.getLiek().getId());
             DaoFactory.INSTANCE.getLiekDao().upravLiek(novyliek);
         }
+        
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed

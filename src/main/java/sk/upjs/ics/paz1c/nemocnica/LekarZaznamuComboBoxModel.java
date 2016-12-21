@@ -13,7 +13,9 @@ public class LekarZaznamuComboBoxModel extends DefaultComboBoxModel<Lekar> {
     private void natiahniZDb(){
         lekari = lekarDao.dajLekarov();
         Lekar novy = new Lekar();
-        novy.setMeno("<<novy>>");
+        novy.setMeno("noveMeno");
+        novy.setPriezvisko("novePriezvisko");
+        novy.setSpecializacia("novaSpecializacia");
         lekari.add(0, novy);
     }
 

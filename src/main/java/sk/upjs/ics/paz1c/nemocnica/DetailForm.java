@@ -198,6 +198,7 @@ public class DetailForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // zobrazenie okna upravit
     private void upravitjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravitjButtonActionPerformed
